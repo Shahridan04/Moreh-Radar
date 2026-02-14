@@ -171,70 +171,72 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
             </section>
 
             {/* Features Section */}
-            <section className="px-8 py-16 max-w-lg mx-auto space-y-6">
+            <section className="px-8 py-16 max-w-4xl mx-auto space-y-12">
                 <motion.h2
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     className="text-center text-zinc-500 text-xs uppercase tracking-[0.3em] mb-8"
                 >
-                    Bagaimana Ia Berfungsi
+                    Cara Penggunaan
                 </motion.h2>
 
-                {[
-                    {
-                        icon: <MapPin className="w-5 h-5" />,
-                        title: 'Peta Masa Nyata',
-                        desc: 'Lihat semua masjid yang menyiarkan makanan berlebihan di sekeliling anda.',
-                        color: 'green',
-                    },
-                    {
-                        icon: <Zap className="w-5 h-5" />,
-                        title: '"Saya Nak Pergi!" Sistem',
-                        desc: 'Daftar kedatangan supaya masjid tahu berapa orang sedang menuju.',
-                        color: 'amber',
-                    },
-                    {
-                        icon: <Share2 className="w-5 h-5" />,
-                        title: 'Kongsi via WhatsApp',
-                        desc: 'Sebarkan maklumat makanan kepada rakan dengan satu klik.',
-                        color: 'emerald',
-                    },
-                    {
-                        icon: <Bell className="w-5 h-5" />,
-                        title: 'Notifikasi Rezeki',
-                        desc: 'Terima pemberitahuan apabila makanan ada berhampiran anda.',
-                        color: 'blue',
-                    },
-                ].map((feature, i) => (
-                    <motion.div
-                        key={feature.title}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex flex-col items-center text-center glass-panel rounded-2xl p-8 mx-auto w-full gap-6 shadow-lg border-zinc-800"
-                    >
-                        <div
-                            className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner ${feature.color === 'green'
-                                ? 'bg-green-500/10 text-green-500 border border-green-500/20'
-                                : feature.color === 'amber'
-                                    ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
-                                    : feature.color === 'emerald'
-                                        ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
-                                        : 'bg-blue-500/10 text-blue-500 border border-blue-500/20'
-                                }`}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {[
+                        {
+                            icon: <MapPin className="w-6 h-6" />,
+                            title: 'Peta Masa Nyata',
+                            desc: 'Lihat semua masjid yang menyiarkan makanan berlebihan di sekeliling anda.',
+                            color: 'green',
+                        },
+                        {
+                            icon: <Zap className="w-6 h-6" />,
+                            title: '"Saya Nak Pergi!"',
+                            desc: 'Daftar kedatangan supaya masjid tahu berapa orang sedang menuju.',
+                            color: 'amber',
+                        },
+                        {
+                            icon: <Share2 className="w-6 h-6" />,
+                            title: 'Kongsi via WhatsApp',
+                            desc: 'Sebarkan maklumat makanan kepada rakan dengan satu klik.',
+                            color: 'emerald',
+                        },
+                        {
+                            icon: <Bell className="w-6 h-6" />,
+                            title: 'Notifikasi Rezeki',
+                            desc: 'Terima pemberitahuan apabila makanan ada berhampiran anda.',
+                            color: 'blue',
+                        },
+                    ].map((feature, i) => (
+                        <motion.div
+                            key={feature.title}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className="flex flex-col items-center text-center glass-panel rounded-2xl p-8 gap-5 hover:bg-zinc-900/40 transition-colors group border-zinc-800/50 hover:border-green-500/20"
                         >
-                            {feature.icon}
-                        </div>
-                        <div>
-                            <h3 className="text-white text-lg font-bold mb-2 tracking-wide">{feature.title}</h3>
-                            <p className="text-zinc-400 text-sm leading-relaxed max-w-[280px] mx-auto">
-                                {feature.desc}
-                            </p>
-                        </div>
-                    </motion.div>
-                ))}
+                            <div
+                                className={`w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300 ${feature.color === 'green'
+                                    ? 'bg-green-500/10 text-green-500 border border-green-500/20'
+                                    : feature.color === 'amber'
+                                        ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
+                                        : feature.color === 'emerald'
+                                            ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
+                                            : 'bg-blue-500/10 text-blue-500 border border-blue-500/20'
+                                    }`}
+                            >
+                                {feature.icon}
+                            </div>
+                            <div>
+                                <h3 className="text-white text-lg font-bold mb-3 tracking-wide">{feature.title}</h3>
+                                <p className="text-zinc-400 text-sm leading-relaxed max-w-[280px] mx-auto">
+                                    {feature.desc}
+                                </p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </section>
 
             {/* For Who Section */}
