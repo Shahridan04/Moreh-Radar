@@ -213,23 +213,23 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="flex gap-5 items-center glass-panel rounded-xl p-6 mx-auto w-full"
+                        className="flex flex-col items-center text-center glass-panel rounded-2xl p-8 mx-auto w-full gap-6 shadow-lg border-zinc-800"
                     >
                         <div
-                            className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${feature.color === 'green'
-                                ? 'bg-green-500/10 text-green-500'
+                            className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner ${feature.color === 'green'
+                                ? 'bg-green-500/10 text-green-500 border border-green-500/20'
                                 : feature.color === 'amber'
-                                    ? 'bg-amber-500/10 text-amber-500'
+                                    ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
                                     : feature.color === 'emerald'
-                                        ? 'bg-emerald-500/10 text-emerald-500'
-                                        : 'bg-blue-500/10 text-blue-500'
+                                        ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
+                                        : 'bg-blue-500/10 text-blue-500 border border-blue-500/20'
                                 }`}
                         >
                             {feature.icon}
                         </div>
-                        <div className="text-left">
-                            <h3 className="text-white text-base font-bold">{feature.title}</h3>
-                            <p className="text-zinc-500 text-sm mt-1.5 leading-relaxed">
+                        <div>
+                            <h3 className="text-white text-lg font-bold mb-2 tracking-wide">{feature.title}</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed max-w-[280px] mx-auto">
                                 {feature.desc}
                             </p>
                         </div>
