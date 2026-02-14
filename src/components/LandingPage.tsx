@@ -138,7 +138,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                     >
                         <button
                             onClick={onEnter}
-                            className="w-full py-5 bg-green-500 hover:bg-green-400 text-black rounded-2xl text-lg font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-[0_0_40px_rgba(34,197,94,0.3)]"
+                            className="w-full py-5 my-8 bg-green-500 hover:bg-green-400 text-black rounded-2xl text-lg font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-[0_0_40px_rgba(34,197,94,0.3)]"
                             style={{ minHeight: '60px' }}
                         >
                             Buka Radar
@@ -213,10 +213,10 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="flex gap-4 items-start glass-panel rounded-xl p-5"
+                        className="flex gap-5 items-center glass-panel rounded-xl p-6 mx-auto w-full"
                     >
                         <div
-                            className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${feature.color === 'green'
+                            className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${feature.color === 'green'
                                 ? 'bg-green-500/10 text-green-500'
                                 : feature.color === 'amber'
                                     ? 'bg-amber-500/10 text-amber-500'
@@ -227,9 +227,9 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         >
                             {feature.icon}
                         </div>
-                        <div>
-                            <h3 className="text-white text-sm font-bold">{feature.title}</h3>
-                            <p className="text-zinc-500 text-xs mt-1 leading-relaxed">
+                        <div className="text-left">
+                            <h3 className="text-white text-base font-bold">{feature.title}</h3>
+                            <p className="text-zinc-500 text-sm mt-1.5 leading-relaxed">
                                 {feature.desc}
                             </p>
                         </div>

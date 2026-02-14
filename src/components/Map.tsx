@@ -108,8 +108,8 @@ export default function RadarMap({
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 />
 
-                {/* Zoom control — bottom right so it doesn't cover top UI */}
-                <ZoomControl position="bottomright" />
+                {/* Zoom control — bottom left so it doesn't cover bottom bar */}
+                <ZoomControl position="bottomleft" />
 
                 {/* Map interactions */}
                 <MapClickHandler onMapClick={() => { }} />

@@ -272,6 +272,11 @@ body {
 }
 
 
+/* Push zoom controls above the fixed bottom bar */
+.leaflet-bottom.leaflet-left {
+  bottom: 120px !important;
+}
+
 .leaflet-control-zoom a {
   background: rgba(9, 9, 11, 0.9) !important;
   color: #22c55e !important;
