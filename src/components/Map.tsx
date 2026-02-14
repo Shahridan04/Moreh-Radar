@@ -5,6 +5,7 @@ import {
     MapContainer,
     TileLayer,
     Marker,
+    ZoomControl,
     useMap,
     useMapEvents,
 } from 'react-leaflet'
@@ -97,7 +98,7 @@ export default function RadarMap({
                 center={center}
                 zoom={13}
                 style={{ width: '100%', height: '100%' }}
-                zoomControl={true}
+                zoomControl={false}
                 ref={mapRef}
                 attributionControl={false}
             >
@@ -106,6 +107,9 @@ export default function RadarMap({
                     url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 />
+
+                {/* Zoom control — bottom right so it doesn't cover top UI */}
+                <ZoomControl position="bottomright" />
 
                 {/* Map interactions */}
                 <MapClickHandler onMapClick={() => { }} />

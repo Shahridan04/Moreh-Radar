@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Utensils, Building2, Leaf, TrendingUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
@@ -32,77 +31,65 @@ function AnimatedNumber({ target, duration = 2000 }: { target: number; duration?
 }
 
 export default function StatsBar({ totalMealsSaved, activeMosques, totalActivePax }: StatsBarProps) {
-    const wastePreventedKg = Math.round(totalMealsSaved * 0.15) // ~150g per meal
+    const wastePreventedKg = Math.round(totalMealsSaved * 0.15)
 
     return (
-        <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="fixed top-[52px] left-0 right-0 z-[750] glass-panel border-b border-green-500/10"
-        >
-            <div className="flex items-center justify-around py-2.5 px-2">
-                {/* Meals Saved */}
-                <div className="flex items-center gap-1.5 text-center">
-                    <Utensils className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
+        <div className="w-full glass-panel border-b border-green-500/10 flex-shrink-0">
+            <div className="flex items-center justify-around py-1.5 px-2">
+                <div className="flex items-center gap-1 text-center">
+                    <Utensils className="w-3 h-3 text-green-500 flex-shrink-0" />
                     <div>
-                        <div className="text-green-400 text-sm font-bold leading-tight">
+                        <span className="text-green-400 text-xs font-bold">
                             <AnimatedNumber target={totalMealsSaved} />
-                        </div>
-                        <div className="text-zinc-600 text-[8px] uppercase tracking-wider leading-tight">
+                        </span>
+                        <span className="text-zinc-600 text-[7px] uppercase tracking-wider ml-1">
                             Hidangan
-                        </div>
+                        </span>
                     </div>
                 </div>
 
-                {/* Divider */}
-                <div className="w-px h-6 bg-zinc-800" />
+                <div className="w-px h-4 bg-zinc-800" />
 
-                {/* Active Mosques */}
-                <div className="flex items-center gap-1.5 text-center">
-                    <Building2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
+                <div className="flex items-center gap-1 text-center">
+                    <Building2 className="w-3 h-3 text-green-500 flex-shrink-0" />
                     <div>
-                        <div className="text-green-400 text-sm font-bold leading-tight">
+                        <span className="text-green-400 text-xs font-bold">
                             <AnimatedNumber target={activeMosques} />
-                        </div>
-                        <div className="text-zinc-600 text-[8px] uppercase tracking-wider leading-tight">
-                            Masjid Aktif
-                        </div>
+                        </span>
+                        <span className="text-zinc-600 text-[7px] uppercase tracking-wider ml-1">
+                            Masjid
+                        </span>
                     </div>
                 </div>
 
-                {/* Divider */}
-                <div className="w-px h-6 bg-zinc-800" />
+                <div className="w-px h-4 bg-zinc-800" />
 
-                {/* Waste Prevented */}
-                <div className="flex items-center gap-1.5 text-center">
-                    <Leaf className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                <div className="flex items-center gap-1 text-center">
+                    <Leaf className="w-3 h-3 text-emerald-500 flex-shrink-0" />
                     <div>
-                        <div className="text-emerald-400 text-sm font-bold leading-tight">
+                        <span className="text-emerald-400 text-xs font-bold">
                             ~<AnimatedNumber target={wastePreventedKg} />kg
-                        </div>
-                        <div className="text-zinc-600 text-[8px] uppercase tracking-wider leading-tight">
-                            Jimat Bazir
-                        </div>
+                        </span>
+                        <span className="text-zinc-600 text-[7px] uppercase tracking-wider ml-1">
+                            Jimat
+                        </span>
                     </div>
                 </div>
 
-                {/* Divider */}
-                <div className="w-px h-6 bg-zinc-800" />
+                <div className="w-px h-4 bg-zinc-800" />
 
-                {/* Available Now */}
-                <div className="flex items-center gap-1.5 text-center">
-                    <TrendingUp className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
+                <div className="flex items-center gap-1 text-center">
+                    <TrendingUp className="w-3 h-3 text-amber-500 flex-shrink-0" />
                     <div>
-                        <div className="text-amber-400 text-sm font-bold leading-tight">
+                        <span className="text-amber-400 text-xs font-bold">
                             <AnimatedNumber target={totalActivePax} />
-                        </div>
-                        <div className="text-zinc-600 text-[8px] uppercase tracking-wider leading-tight">
-                            Pax Tersedia
-                        </div>
+                        </span>
+                        <span className="text-zinc-600 text-[7px] uppercase tracking-wider ml-1">
+                            Pax
+                        </span>
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     )
 }

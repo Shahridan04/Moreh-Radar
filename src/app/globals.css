@@ -271,6 +271,13 @@ body {
   font-family: 'Share Tech Mono', monospace !important;
 }
 
+.leaflet-control-zoom {
+  position: absolute !important;
+  bottom: 90px !important;
+  left: 10px !important;
+  top: auto !important;
+}
+
 .leaflet-control-zoom a {
   background: rgba(9, 9, 11, 0.9) !important;
   color: #22c55e !important;
