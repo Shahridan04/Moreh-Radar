@@ -1,0 +1,17 @@
+{
+    "name": "Moreh Radar",
+    "short_name": "Moreh Radar",
+    "description": "Kill Hunger. Kill Waste. Real-time food rescue for Ramadan.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#050505",
+    "theme_color": "#22c55e",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "64x64",
+            "type": "image/x-icon"
+        }
+    ]
+}
