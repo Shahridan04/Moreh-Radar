@@ -20,7 +20,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
     return (
         <div className="min-h-screen bg-zinc-950 text-white overflow-y-auto">
             {/* Hero Section */}
-            <section className="relative min-h-screen flex flex-col items-center justify-center px-8 py-20 overflow-hidden">
+            <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 overflow-hidden">
                 {/* Animated background grid */}
                 <div
                     className="absolute inset-0 opacity-[0.03]"
@@ -56,7 +56,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 text-center space-y-10 max-w-lg mx-auto px-2">
+                <div className="relative z-10 text-center space-y-8 max-w-lg mx-auto">
                     {/* Logo */}
                     <motion.div
                         initial={{ scale: 0, rotate: -180 }}
@@ -88,7 +88,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
-                        className="space-y-5 px-2"
+                        className="space-y-4"
                     >
                         <p className="text-zinc-300 text-lg leading-relaxed">
                             Setiap Ramadan, Malaysia membazirkan{' '}
@@ -108,7 +108,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7 }}
-                        className="grid grid-cols-3 gap-4"
+                        className="grid grid-cols-3 gap-3"
                     >
                         <div className="glass-panel rounded-xl p-3 text-center">
                             <div className="text-green-400 text-2xl font-bold">3,000</div>
@@ -171,7 +171,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
             </section>
 
             {/* Features Section */}
-            <section className="px-8 py-16 max-w-lg mx-auto space-y-6">
+            <section className="px-6 py-12 max-w-lg mx-auto space-y-6">
                 <motion.h2
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -217,12 +217,12 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                     >
                         <div
                             className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${feature.color === 'green'
-                                ? 'bg-green-500/10 text-green-500'
-                                : feature.color === 'amber'
-                                    ? 'bg-amber-500/10 text-amber-500'
-                                    : feature.color === 'emerald'
-                                        ? 'bg-emerald-500/10 text-emerald-500'
-                                        : 'bg-blue-500/10 text-blue-500'
+                                    ? 'bg-green-500/10 text-green-500'
+                                    : feature.color === 'amber'
+                                        ? 'bg-amber-500/10 text-amber-500'
+                                        : feature.color === 'emerald'
+                                            ? 'bg-emerald-500/10 text-emerald-500'
+                                            : 'bg-blue-500/10 text-blue-500'
                                 }`}
                         >
                             {feature.icon}
@@ -238,7 +238,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
             </section>
 
             {/* For Who Section */}
-            <section className="px-8 py-16 max-w-lg mx-auto">
+            <section className="px-6 py-12 max-w-lg mx-auto">
                 <motion.h2
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -248,7 +248,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                     Untuk Siapa?
                 </motion.h2>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -304,7 +304,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
             </section>
 
             {/* Bottom CTA */}
-            <section className="px-8 py-16 pb-20 max-w-lg mx-auto">
+            <section className="px-6 py-12 max-w-lg mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
