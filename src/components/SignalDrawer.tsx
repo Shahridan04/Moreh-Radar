@@ -122,7 +122,7 @@ export default function SignalDrawer({
                     <X className="w-6 h-6" />
                 </button>
 
-                <div className="px-5 pb-6 pt-2 space-y-3">
+                <div className="px-5 pb-8 pt-4 space-y-4 sm:px-6 sm:pb-10 sm:pt-5">
                     {/* Status badge */}
                     <div className="flex items-center gap-2">
                         {mosque.status === 'ACTIVE' ? (
@@ -197,7 +197,7 @@ export default function SignalDrawer({
                     </AnimatePresence>
 
                     {/* Action Buttons */}
-                    <div className="space-y-2.5 pt-1">
+                    <div className="space-y-3 pt-2">
                         {mosque.status === 'ACTIVE' ? (
                             <>
                                 {/* Navigate / Claim Button */}

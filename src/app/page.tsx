@@ -242,27 +242,27 @@ export default function Home() {
         />
 
         {/* View Toggle + Filter */}
-        <div className="w-full glass-panel px-5 py-3 flex items-center justify-between border-b border-zinc-800/50">
+        <div className="w-full glass-panel px-5 py-5 sm:px-6 sm:py-6 flex items-center justify-between gap-4 border-b border-zinc-800/50">
           {/* Map/List Toggle */}
-          <div className="flex bg-zinc-900/90 border border-zinc-700 rounded-lg overflow-hidden">
+          <div className="flex bg-zinc-900/90 border border-zinc-700 rounded-xl overflow-hidden">
             <button
               onClick={() => setViewMode('map')}
-              className={`flex items-center gap-2 px-6 py-3 text-base font-bold uppercase tracking-wider transition-all ${viewMode === 'map'
+              className={`flex items-center justify-center gap-3 px-8 py-4 text-base font-bold uppercase tracking-wider transition-all sm:px-10 sm:py-5 min-h-[48px] ${viewMode === 'map'
                 ? 'bg-green-500/20 text-green-400'
                 : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
-              <Map className="w-5 h-5" />
+              <Map className="w-5 h-5 shrink-0" />
               Peta
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`flex items-center gap-2 px-6 py-3 text-base font-bold uppercase tracking-wider transition-all ${viewMode === 'list'
+              className={`flex items-center justify-center gap-3 px-8 py-4 text-base font-bold uppercase tracking-wider transition-all sm:px-10 sm:py-5 min-h-[48px] ${viewMode === 'list'
                 ? 'bg-green-500/20 text-green-400'
                 : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
-              <List className="w-5 h-5" />
+              <List className="w-5 h-5 shrink-0" />
               Senarai
             </button>
           </div>
@@ -270,12 +270,12 @@ export default function Home() {
           {/* Distance Filter Toggle */}
           <button
             onClick={() => setShowFilter(!showFilter)}
-            className={`flex items-center gap-2 px-4 py-3 rounded-lg border text-sm font-bold transition-all ${showFilter
+            className={`flex items-center justify-center gap-3 px-6 py-4 rounded-xl border text-sm font-bold transition-all shrink-0 min-h-[48px] sm:px-7 sm:py-5 ${showFilter
               ? 'bg-green-500/20 border-green-500/30 text-green-400'
               : 'bg-zinc-900/90 border-zinc-700 text-zinc-500'
               }`}
           >
-            <SlidersHorizontal className="w-5 h-5" />
+            <SlidersHorizontal className="w-5 h-5 shrink-0" />
             {maxDistance}km
           </button>
         </div>
@@ -289,7 +289,7 @@ export default function Home() {
               exit={{ opacity: 0, height: 0 }}
               className="overflow-hidden"
             >
-              <div className="glass-panel px-4 py-3 border-b border-zinc-800/50 space-y-2">
+              <div className="glass-panel px-5 py-4 border-b border-zinc-800/50 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-zinc-400 text-xs">Jarak Maksimum</span>
                   <span className="text-green-400 text-sm font-bold">{maxDistance} km</span>
@@ -339,7 +339,7 @@ export default function Home() {
       {/* ===== BOTTOM BAR (fixed at bottom) ===== */}
       <div className="fixed bottom-0 left-0 right-0 z-[800] glass-panel border-t border-green-500/20">
         <BottomTicker mosques={mosques} />
-        <div className="px-4 pb-4 pt-1">
+        <div className="px-5 pb-5 pt-3 sm:px-6 sm:pb-6 sm:pt-4">
           <button
             onClick={() => setBroadcastOpen(true)}
             className="w-full py-3.5 broadcast-btn bg-green-500 hover:bg-green-400 text-black rounded-xl flex items-center justify-center gap-3 transition-all active:scale-[0.98]"

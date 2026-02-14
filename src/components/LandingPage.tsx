@@ -4,8 +4,6 @@ import { motion } from 'framer-motion'
 import {
     Radar,
     MapPin,
-    Users,
-    Leaf,
     ArrowRight,
     Zap,
     Share2,
@@ -16,133 +14,187 @@ type LandingPageProps = {
     onEnter: () => void
 }
 
+const FEATURES = [
+    {
+        icon: MapPin,
+        title: 'Peta Masa Nyata',
+        desc: 'Lihat semua masjid yang menyiarkan makanan berlebihan di sekeliling anda.',
+        color: 'green',
+    },
+    {
+        icon: Zap,
+        title: '"Saya Nak Pergi!"',
+        desc: 'Daftar kedatangan supaya masjid tahu berapa orang sedang menuju.',
+        color: 'amber',
+    },
+    {
+        icon: Share2,
+        title: 'Kongsi via WhatsApp',
+        desc: 'Sebarkan maklumat makanan kepada rakan dengan satu klik.',
+        color: 'emerald',
+    },
+    {
+        icon: Bell,
+        title: 'Notifikasi Rezeki',
+        desc: 'Terima pemberitahuan apabila makanan ada berhampiran anda.',
+        color: 'blue',
+    },
+] as const
+
+const AUDIENCES = [
+    { emoji: '🕌', title: 'AJK Masjid', desc: 'Siarkan makanan berlebihan dengan mudah' },
+    { emoji: '🎓', title: 'Pelajar', desc: 'Cari makanan moreh berdekatan dalam satu klik' },
+    { emoji: '👨‍👩‍👧‍👦', title: 'Komuniti', desc: 'Bantu agihkan rezeki kepada yang memerlukan' },
+    { emoji: '🌍', title: 'Bumi', desc: 'Kurangkan pembaziran, jimat karbon' },
+] as const
+
+const STATS = [
+    { value: '3,000', label: 'Tan Bazir/Ramadan', color: 'text-green-400' },
+    { value: '65%', label: 'Masih Boleh Dimakan', color: 'text-amber-400' },
+    { value: '0', label: 'Platform Sedia Ada', color: 'text-emerald-400' },
+] as const
+
+const iconColorClasses = {
+    green: 'bg-green-500/10 text-green-500 border-green-500/20',
+    amber: 'bg-amber-500/10 text-amber-500 border-amber-500/20',
+    emerald: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20',
+    blue: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
+} as const
+
 export default function LandingPage({ onEnter }: LandingPageProps) {
     return (
-        <div className="min-h-screen bg-zinc-950 text-white overflow-y-auto flex flex-col items-center w-full">
-            {/* Hero Section */}
-            <section className="relative min-h-screen flex flex-col items-center justify-center px-8 py-20 overflow-hidden">
-                {/* Animated background grid */}
-                <div
-                    className="absolute inset-0 opacity-[0.03]"
-                    style={{
-                        backgroundImage: `
-              linear-gradient(rgba(0,255,65,1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0,255,65,1) 1px, transparent 1px)
-            `,
-                        backgroundSize: '40px 40px',
-                    }}
-                />
+        <div
+            className="relative min-h-[100dvh] min-h-[100vh] w-full overflow-x-hidden overflow-y-auto bg-zinc-950 text-white"
+            style={{
+                paddingTop: 'env(safe-area-inset-top, 0)',
+                paddingBottom: 'env(safe-area-inset-bottom, 0)',
+            }}
+        >
+            {/* Full-page grid background — spans entire landing page */}
+            <div
+                className="pointer-events-none fixed inset-0 z-0 opacity-[0.04]"
+                aria-hidden
+                style={{
+                    backgroundImage: `
+                        linear-gradient(rgba(0,255,65,1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,255,65,1) 1px, transparent 1px)
+                    `,
+                    backgroundSize: 'clamp(24px, 5vw, 40px) clamp(24px, 5vw, 40px)',
+                }}
+            />
 
-                {/* Radar sweep background */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 0.05, scale: 1 }}
-                        transition={{ duration: 2 }}
-                        className="w-[600px] h-[600px] rounded-full border border-green-500/20"
-                    />
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 0.03, scale: 1 }}
-                        transition={{ duration: 2, delay: 0.3 }}
-                        className="absolute w-[400px] h-[400px] rounded-full border border-green-500/20"
-                    />
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 0.02, scale: 1 }}
-                        transition={{ duration: 2, delay: 0.6 }}
-                        className="absolute w-[200px] h-[200px] rounded-full border border-green-500/20"
-                    />
+            {/* ───────────────────────────────────────────────────────────────
+                HERO SECTION
+                Mobile-first: stacking layout, responsive radar rings
+            ─────────────────────────────────────────────────────────────── */}
+            <section
+                className="relative flex min-h-[100dvh] min-h-[100vh] w-full flex-col items-center justify-center px-6 py-16 sm:px-8 sm:py-20 md:px-10 md:py-24"
+                aria-label="Hero"
+            >
+                {/* Radar rings — scale with viewport */}
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                    {[
+                        { size: 'clamp(180px, 50vw, 600px)', delay: 0, opacity: 0.05 },
+                        { size: 'clamp(120px, 35vw, 400px)', delay: 0.3, opacity: 0.03 },
+                        { size: 'clamp(60px, 18vw, 200px)', delay: 0.6, opacity: 0.02 },
+                    ].map((ring, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: ring.opacity, scale: 1 }}
+                            transition={{ duration: 2, delay: ring.delay }}
+                            className="absolute rounded-full border border-green-500/20"
+                            style={{
+                                width: ring.size,
+                                height: ring.size,
+                            }}
+                        />
+                    ))}
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10 text-center space-y-10 max-w-lg mx-auto px-2">
+                {/* Hero content — vertically centered for balanced layout */}
+                <div className="relative z-10 flex w-full max-w-xl flex-col items-center gap-7 text-center sm:gap-9">
                     {/* Logo */}
                     <motion.div
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{ type: 'spring', damping: 15, stiffness: 200 }}
-                        className="mx-auto w-20 h-20 rounded-2xl bg-green-500/10 border border-green-500/30 flex items-center justify-center"
+                        className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-green-500/30 bg-green-500/10 p-3 sm:h-20 sm:w-20 sm:rounded-2xl sm:p-3.5"
                     >
-                        <Radar className="w-10 h-10 text-green-500" />
+                        <Radar className="h-6 w-6 text-green-500 sm:h-8 sm:w-8" />
                     </motion.div>
 
                     {/* Title */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="space-y-2"
+                        transition={{ delay: 0.2 }}
+                        className="space-y-1 sm:space-y-2"
                     >
-                        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+                        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
                             <span className="text-green-500">Moreh</span>{' '}
                             <span className="text-white">Radar</span>
                         </h1>
-                        <p className="text-zinc-500 text-sm uppercase tracking-[0.3em]">
+                        <p className="text-sm uppercase tracking-[0.2em] text-zinc-500 sm:text-base sm:tracking-[0.3em]">
                             Kill Hunger. Kill Waste.
                         </p>
                     </motion.div>
 
-                    {/* Problem Statement */}
+                    {/* Problem statement */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 }}
-                        className="space-y-5 px-2"
+                        transition={{ delay: 0.4 }}
+                        className="space-y-3 sm:space-y-4"
                     >
-                        <p className="text-zinc-300 text-lg leading-relaxed">
+                        <p className="text-sm leading-relaxed text-zinc-300 sm:text-base md:text-lg">
                             Setiap Ramadan, Malaysia membazirkan{' '}
-                            <span className="text-amber-400 font-bold">3,000 tan</span>{' '}
+                            <span className="font-bold text-amber-400">3,000 tan</span>{' '}
                             makanan. Pada masa yang sama, pelajar universiti kelaparan{' '}
-                            <span className="text-green-400 font-bold">2km</span> dari masjid
+                            <span className="font-bold text-green-400">2km</span> dari masjid
                             yang mempunyai lebihan moreh.
                         </p>
-                        <p className="text-zinc-400 text-base">
+                        <p className="text-sm text-zinc-400 sm:text-base">
                             Moreh Radar menghubungkan masjid berlebihan makanan dengan komuniti
-                            yang memerlukan — dalam <span className="text-green-400 font-bold">masa nyata</span>.
+                            yang memerlukan — dalam <span className="font-bold text-green-400">masa nyata</span>.
                         </p>
                     </motion.div>
 
-                    {/* Stats */}
+                    {/* Stats — responsive grid */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.7 }}
-                        className="grid grid-cols-3 gap-4"
+                        transition={{ delay: 0.5 }}
+                        className="grid w-full grid-cols-3 gap-2 sm:gap-4"
                     >
-                        <div className="glass-panel rounded-xl p-4 py-5 text-center">
-                            <div className="text-green-400 text-2xl font-bold">3,000</div>
-                            <div className="text-zinc-500 text-[10px] uppercase tracking-wider mt-2">
-                                Tan Bazir/Ramadan
+                        {STATS.map((stat) => (
+                            <div
+                                key={stat.label}
+                                className="glass-panel flex flex-col items-center justify-center rounded-lg px-4 py-4 text-center sm:rounded-xl sm:px-5 sm:py-6"
+                            >
+                                <span className={`text-lg font-bold sm:text-2xl ${stat.color}`}>
+                                    {stat.value}
+                                </span>
+                                <span className="mt-1 text-[10px] uppercase tracking-wider text-zinc-500 sm:mt-2 sm:text-xs">
+                                    {stat.label}
+                                </span>
                             </div>
-                        </div>
-                        <div className="glass-panel rounded-xl p-4 py-5 text-center">
-                            <div className="text-amber-400 text-2xl font-bold">65%</div>
-                            <div className="text-zinc-500 text-[10px] uppercase tracking-wider mt-2">
-                                Masih Boleh Dimakan
-                            </div>
-                        </div>
-                        <div className="glass-panel rounded-xl p-4 py-5 text-center">
-                            <div className="text-emerald-400 text-2xl font-bold">0</div>
-                            <div className="text-zinc-500 text-[10px] uppercase tracking-wider mt-2">
-                                Platform Sedia Ada
-                            </div>
-                        </div>
+                        ))}
                     </motion.div>
 
-                    {/* CTA Button */}
+                    {/* CTA — min 44px touch target */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.9 }}
+                        transition={{ delay: 0.7 }}
+                        className="w-full max-w-sm"
                     >
                         <button
                             onClick={onEnter}
-                            className="w-full py-5 my-8 bg-green-500 hover:bg-green-400 text-black rounded-2xl text-lg font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-[0_0_40px_rgba(34,197,94,0.3)]"
-                            style={{ minHeight: '60px' }}
+                            className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-green-500 py-4 text-base font-bold uppercase tracking-wider text-black shadow-[0_0_40px_rgba(34,197,94,0.3)] transition-all hover:bg-green-400 active:scale-[0.98] sm:min-h-[56px] sm:rounded-2xl sm:py-5 sm:text-lg sm:tracking-wider"
                         >
                             Buka Radar
-                            <ArrowRight className="w-5 h-5" />
+                            <ArrowRight className="h-5 w-5 shrink-0" />
                         </button>
                     </motion.div>
 
@@ -150,180 +202,141 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 1.1 }}
-                        className="flex items-center justify-center gap-3 pt-2"
+                        transition={{ delay: 0.9 }}
+                        className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
                     >
-                        <div className="flex items-center gap-1.5 text-zinc-600 text-[10px] uppercase tracking-wider">
-                            <div className="w-5 h-5 rounded bg-[#DDA63A] flex items-center justify-center text-white text-[8px] font-bold">
+                        <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-zinc-600 sm:text-xs">
+                            <span className="flex h-9 min-w-9 shrink-0 items-center justify-center rounded-md px-2.5 py-1.5 bg-[#DDA63A] text-xs font-bold text-white">
                                 2
-                            </div>
+                            </span>
                             Zero Hunger
                         </div>
-                        <div className="w-1 h-1 rounded-full bg-zinc-700" />
-                        <div className="flex items-center gap-1.5 text-zinc-600 text-[10px] uppercase tracking-wider">
-                            <div className="w-5 h-5 rounded bg-[#BF8B2E] flex items-center justify-center text-white text-[8px] font-bold">
+                        <span className="h-1 w-1 shrink-0 rounded-full bg-zinc-700" aria-hidden />
+                        <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-zinc-600 sm:text-xs">
+                            <span className="flex h-9 min-w-9 shrink-0 items-center justify-center rounded-md px-2.5 py-1.5 bg-[#BF8B2E] text-xs font-bold text-white">
                                 12
-                            </div>
-                            Responsible Consumption
+                            </span>
+                            <span className="whitespace-nowrap">Responsible Consumption</span>
                         </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Features Section */}
-            <section className="px-8 py-16 max-w-4xl mx-auto space-y-12">
-                <motion.h2
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="text-center text-zinc-500 text-xs uppercase tracking-[0.3em] mb-8"
-                >
-                    Cara Penggunaan
-                </motion.h2>
+            {/* ───────────────────────────────────────────────────────────────
+                FEATURES — Cara Penggunaan
+            ─────────────────────────────────────────────────────────────── */}
+            <section
+                className="relative flex w-full justify-center px-4 pt-16 pb-12 sm:px-6 sm:pt-20 sm:pb-16 md:px-8 md:pt-24 md:pb-20"
+                aria-labelledby="features-heading"
+            >
+                <div className="w-full max-w-4xl">
+                    <motion.h2
+                        id="features-heading"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, margin: '-50px' }}
+                        className="mb-10 text-center text-lg font-semibold uppercase tracking-[0.15em] text-zinc-400 sm:mb-12 sm:text-xl sm:tracking-[0.2em] md:text-2xl md:tracking-[0.25em]"
+                    >
+                        Cara Penggunaan
+                    </motion.h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {[
-                        {
-                            icon: <MapPin className="w-6 h-6" />,
-                            title: 'Peta Masa Nyata',
-                            desc: 'Lihat semua masjid yang menyiarkan makanan berlebihan di sekeliling anda.',
-                            color: 'green',
-                        },
-                        {
-                            icon: <Zap className="w-6 h-6" />,
-                            title: '"Saya Nak Pergi!"',
-                            desc: 'Daftar kedatangan supaya masjid tahu berapa orang sedang menuju.',
-                            color: 'amber',
-                        },
-                        {
-                            icon: <Share2 className="w-6 h-6" />,
-                            title: 'Kongsi via WhatsApp',
-                            desc: 'Sebarkan maklumat makanan kepada rakan dengan satu klik.',
-                            color: 'emerald',
-                        },
-                        {
-                            icon: <Bell className="w-6 h-6" />,
-                            title: 'Notifikasi Rezeki',
-                            desc: 'Terima pemberitahuan apabila makanan ada berhampiran anda.',
-                            color: 'blue',
-                        },
-                    ].map((feature, i) => (
-                        <motion.div
-                            key={feature.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
-                            className="flex flex-col items-center text-center glass-panel rounded-2xl p-8 gap-5 hover:bg-zinc-900/40 transition-colors group border-zinc-800/50 hover:border-green-500/20"
-                        >
-                            <div
-                                className={`w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300 ${feature.color === 'green'
-                                    ? 'bg-green-500/10 text-green-500 border border-green-500/20'
-                                    : feature.color === 'amber'
-                                        ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
-                                        : feature.color === 'emerald'
-                                            ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20'
-                                            : 'bg-blue-500/10 text-blue-500 border border-blue-500/20'
-                                    }`}
+                    <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-10">
+                        {FEATURES.map((feature, i) => (
+                            <motion.div
+                                key={feature.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-30px' }}
+                                transition={{ delay: i * 0.08 }}
+                                className="group glass-panel flex flex-col items-center rounded-xl px-8 pt-10 pb-8 text-center transition-colors hover:border-green-500/30 sm:rounded-2xl sm:px-10 sm:pt-12 sm:pb-10"
                             >
-                                {feature.icon}
-                            </div>
-                            <div>
-                                <h3 className="text-white text-lg font-bold mb-3 tracking-wide">{feature.title}</h3>
-                                <p className="text-zinc-400 text-sm leading-relaxed max-w-[280px] mx-auto">
+                                <div
+                                    className={`flex min-h-[5.5rem] min-w-[5.5rem] shrink-0 items-center justify-center rounded-xl border p-6 transition-transform duration-300 group-hover:scale-110 sm:min-h-[6rem] sm:min-w-[6rem] sm:p-7 ${iconColorClasses[feature.color]}`}
+                                >
+                                    <feature.icon className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
+                                </div>
+                                <h3 className="mt-5 text-base font-bold tracking-wide text-white sm:text-lg md:text-xl">
+                                    {feature.title}
+                                </h3>
+                                <p className="mt-3 max-w-[280px] text-sm leading-relaxed text-zinc-400 sm:text-base">
                                     {feature.desc}
                                 </p>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            {/* For Who Section */}
-            <section className="px-8 py-16 max-w-lg mx-auto">
-                <motion.h2
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="text-center text-zinc-500 text-xs uppercase tracking-[0.3em] mb-8"
-                >
-                    Untuk Siapa?
-                </motion.h2>
+            {/* ───────────────────────────────────────────────────────────────
+                AUDIENCE — Untuk Siapa?
+            ─────────────────────────────────────────────────────────────── */}
+            <section
+                className="relative flex w-full justify-center px-4 pt-12 pb-12 sm:px-6 sm:pt-16 sm:pb-16 md:px-8 md:pt-20 md:pb-20"
+                aria-labelledby="audience-heading"
+            >
+                <div className="w-full max-w-4xl">
+                    <motion.h2
+                        id="audience-heading"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, margin: '-50px' }}
+                        className="mb-10 text-center text-lg font-semibold uppercase tracking-[0.15em] text-zinc-400 sm:mb-12 sm:text-xl sm:tracking-[0.2em] md:text-2xl md:tracking-[0.25em]"
+                    >
+                        Untuk Siapa?
+                    </motion.h2>
 
-                <div className="grid grid-cols-2 gap-4">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="glass-panel rounded-xl p-5 text-center space-y-3"
-                    >
-                        <div className="text-3xl">🕌</div>
-                        <h3 className="text-green-400 text-sm font-bold">AJK Masjid</h3>
-                        <p className="text-zinc-500 text-[11px] leading-relaxed">
-                            Siarkan makanan berlebihan dengan mudah
-                        </p>
-                    </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="glass-panel rounded-xl p-5 text-center space-y-3"
-                    >
-                        <div className="text-3xl">🎓</div>
-                        <h3 className="text-green-400 text-sm font-bold">Pelajar</h3>
-                        <p className="text-zinc-500 text-[11px] leading-relaxed">
-                            Cari makanan moreh berdekatan dalam satu klik
-                        </p>
-                    </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="glass-panel rounded-xl p-5 text-center space-y-3"
-                    >
-                        <div className="text-3xl">👨‍👩‍👧‍👦</div>
-                        <h3 className="text-green-400 text-sm font-bold">Komuniti</h3>
-                        <p className="text-zinc-500 text-[11px] leading-relaxed">
-                            Bantu agihkan rezeki kepada yang memerlukan
-                        </p>
-                    </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        className="glass-panel rounded-xl p-5 text-center space-y-3"
-                    >
-                        <div className="text-3xl">🌍</div>
-                        <h3 className="text-green-400 text-sm font-bold">Bumi</h3>
-                        <p className="text-zinc-500 text-[11px] leading-relaxed">
-                            Kurangkan pembaziran, jimat karbon
-                        </p>
-                    </motion.div>
+                    <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-10">
+                        {AUDIENCES.map((item, i) => (
+                            <motion.div
+                                key={item.title}
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-20px' }}
+                                transition={{ delay: i * 0.06 }}
+                                className="glass-panel flex flex-col items-center rounded-xl px-8 pt-10 pb-8 text-center transition-colors hover:border-green-500/30 sm:rounded-2xl sm:px-10 sm:pt-12 sm:pb-10"
+                            >
+                                <div
+                                    className="flex min-h-[5.5rem] min-w-[5.5rem] shrink-0 items-center justify-center rounded-xl border border-green-500/20 bg-green-500/5 p-6 sm:min-h-[6rem] sm:min-w-[6rem] sm:p-7"
+                                    aria-hidden
+                                >
+                                    <span className="text-2xl sm:text-3xl">{item.emoji}</span>
+                                </div>
+                                <h3 className="mt-5 text-base font-bold text-green-400 sm:text-lg md:text-xl">
+                                    {item.title}
+                                </h3>
+                                <p className="mt-3 max-w-[280px] text-sm leading-relaxed text-zinc-500 sm:text-base">
+                                    {item.desc}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            {/* Bottom CTA */}
-            <section className="px-8 py-16 pb-20 max-w-lg mx-auto">
+            {/* ───────────────────────────────────────────────────────────────
+                BOTTOM CTA
+            ─────────────────────────────────────────────────────────────── */}
+            <section
+                className="relative flex w-full justify-center px-4 pt-12 pb-20 sm:px-6 sm:pt-16 sm:pb-28 md:px-8 md:pt-20 md:pb-32"
+                aria-label="Call to action"
+            >
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center space-y-6"
+                    className="flex w-full max-w-md flex-col items-center gap-5 text-center"
                 >
-                    <p className="text-zinc-400 text-sm">
+                    <p className="text-base text-zinc-400 sm:text-lg">
                         Setiap hidangan yang diselamatkan adalah satu nyawa yang dijaga.
                     </p>
                     <button
                         onClick={onEnter}
-                        className="w-full py-5 bg-green-500 hover:bg-green-400 text-black rounded-2xl text-lg font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-[0_0_40px_rgba(34,197,94,0.3)]"
+                        className="flex min-h-[48px] w-full max-w-sm items-center justify-center gap-2 rounded-xl bg-green-500 py-4 text-base font-bold uppercase tracking-wider text-black shadow-[0_0_40px_rgba(34,197,94,0.3)] transition-all hover:bg-green-400 active:scale-[0.98] sm:min-h-[56px] sm:rounded-2xl sm:py-5 sm:text-lg"
                     >
-                        <Radar className="w-5 h-5" />
+                        <Radar className="h-5 w-5 shrink-0" />
                         Buka Radar Sekarang
                     </button>
-                    <p className="text-zinc-700 text-[10px] uppercase tracking-widest">
+                    <p className="pt-4 pb-8 text-xs uppercase tracking-widest text-zinc-600 sm:pb-10">
                         Moreh Radar v1.0 · SDG 2 & 12 · Made in 🇲🇾
                     </p>
                 </motion.div>

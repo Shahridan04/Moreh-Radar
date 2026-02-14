@@ -93,7 +93,7 @@ export default function BroadcastModal({
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Header */}
-                        <div className="flex items-center justify-between p-4 border-b border-green-500/20 sticky top-0 glass-panel z-10">
+                        <div className="flex items-center justify-between px-5 py-5 sm:px-6 sm:py-5 border-b border-green-500/20 sticky top-0 glass-panel z-10">
                             <div className="flex items-center gap-2">
                                 <Radio className="w-5 h-5 text-green-500" />
                                 <span className="text-green-500 text-sm uppercase tracking-wider font-bold">
@@ -110,16 +110,16 @@ export default function BroadcastModal({
 
                         {/* === AUTH STEP === */}
                         {currentStep === 'auth' && (
-                            <div className="p-6 space-y-6">
-                                <div className="text-center space-y-4 py-4">
+                            <div className="px-6 py-8 sm:px-8 sm:py-10 space-y-8">
+                                <div className="text-center space-y-5">
                                     <div className="w-16 h-16 mx-auto bg-green-500/10 rounded-full flex items-center justify-center">
                                         <Utensils className="w-8 h-8 text-green-500" />
                                     </div>
-                                    <div>
+                                    <div className="space-y-3">
                                         <h3 className="text-green-400 text-lg">
                                             Nak siar makanan?
                                         </h3>
-                                        <p className="text-zinc-500 text-sm mt-2">
+                                        <p className="text-zinc-500 text-sm">
                                             Log masuk untuk kongsi makanan dengan komuniti
                                         </p>
                                     </div>
@@ -127,7 +127,7 @@ export default function BroadcastModal({
 
                                 <button
                                     onClick={signInWithGoogle}
-                                    className="w-full py-4 bg-white text-black rounded-xl text-base font-bold flex items-center justify-center gap-3 hover:bg-gray-100 transition-colors active:scale-[0.98]"
+                                    className="w-full py-5 bg-white text-black rounded-xl text-base font-bold flex items-center justify-center gap-3 hover:bg-gray-100 transition-colors active:scale-[0.98] px-6"
                                     style={{ minHeight: '56px' }}
                                 >
                                     <svg width="20" height="20" viewBox="0 0 24 24">
@@ -139,7 +139,7 @@ export default function BroadcastModal({
                                     Log Masuk dengan Google
                                 </button>
 
-                                <p className="text-zinc-600 text-[11px] text-center">
+                                <p className="text-zinc-600 text-[11px] text-center pt-2">
                                     Tak perlu daftar. Tekan sahaja untuk log masuk.
                                 </p>
                             </div>
@@ -147,7 +147,7 @@ export default function BroadcastModal({
 
                         {/* === FORM STEP === */}
                         {currentStep === 'form' && (
-                            <div className="p-5 space-y-5">
+                            <div className="px-6 py-8 sm:px-8 sm:py-8 space-y-6">
                                 {/* Logged in user indicator */}
                                 {user && (
                                     <div className="flex items-center gap-3 bg-green-500/5 border border-green-500/20 rounded-xl p-3">

@@ -24,7 +24,7 @@ export default function BottomTicker({ mosques }: BottomTickerProps) {
     const tickerText = messages.join('     ')
 
     return (
-        <div className="marquee-container py-2 px-4 border-b border-green-500/10">
+        <div className="marquee-container py-3 px-5 sm:py-4 sm:px-6 border-b border-green-500/10">
             <div className="marquee-content">
                 <span className="text-[11px] tracking-wider">
                     {tickerText.split('>>').map((segment, i) => {
