@@ -242,7 +242,7 @@ export default function Home() {
         />
 
         {/* View Toggle + Filter */}
-        <div className="w-full glass-panel px-3 py-2 flex items-center justify-between border-b border-zinc-800/50">
+        <div className="w-full glass-panel px-5 py-3 flex items-center justify-between border-b border-zinc-800/50">
           {/* Map/List Toggle */}
           <div className="flex bg-zinc-900/90 border border-zinc-700 rounded-lg overflow-hidden">
             <button

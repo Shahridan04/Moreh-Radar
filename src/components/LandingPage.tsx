@@ -110,21 +110,21 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         transition={{ delay: 0.7 }}
                         className="grid grid-cols-3 gap-4"
                     >
-                        <div className="glass-panel rounded-xl p-3 text-center">
+                        <div className="glass-panel rounded-xl p-4 py-5 text-center">
                             <div className="text-green-400 text-2xl font-bold">3,000</div>
-                            <div className="text-zinc-500 text-[10px] uppercase tracking-wider mt-1">
+                            <div className="text-zinc-500 text-[10px] uppercase tracking-wider mt-2">
                                 Tan Bazir/Ramadan
                             </div>
                         </div>
-                        <div className="glass-panel rounded-xl p-3 text-center">
+                        <div className="glass-panel rounded-xl p-4 py-5 text-center">
                             <div className="text-amber-400 text-2xl font-bold">65%</div>
-                            <div className="text-zinc-500 text-[10px] uppercase tracking-wider mt-1">
+                            <div className="text-zinc-500 text-[10px] uppercase tracking-wider mt-2">
                                 Masih Boleh Dimakan
                             </div>
                         </div>
-                        <div className="glass-panel rounded-xl p-3 text-center">
+                        <div className="glass-panel rounded-xl p-4 py-5 text-center">
                             <div className="text-emerald-400 text-2xl font-bold">0</div>
-                            <div className="text-zinc-500 text-[10px] uppercase tracking-wider mt-1">
+                            <div className="text-zinc-500 text-[10px] uppercase tracking-wider mt-2">
                                 Platform Sedia Ada
                             </div>
                         </div>
@@ -213,7 +213,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="flex gap-4 items-start glass-panel rounded-xl p-4"
+                        className="flex gap-4 items-start glass-panel rounded-xl p-5"
                     >
                         <div
                             className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${feature.color === 'green'
@@ -253,7 +253,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="glass-panel rounded-xl p-4 text-center space-y-2"
+                        className="glass-panel rounded-xl p-5 text-center space-y-3"
                     >
                         <div className="text-3xl">🕌</div>
                         <h3 className="text-green-400 text-sm font-bold">AJK Masjid</h3>
@@ -266,7 +266,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="glass-panel rounded-xl p-4 text-center space-y-2"
+                        className="glass-panel rounded-xl p-5 text-center space-y-3"
                     >
                         <div className="text-3xl">🎓</div>
                         <h3 className="text-green-400 text-sm font-bold">Pelajar</h3>
@@ -279,7 +279,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="glass-panel rounded-xl p-4 text-center space-y-2"
+                        className="glass-panel rounded-xl p-5 text-center space-y-3"
                     >
                         <div className="text-3xl">👨‍👩‍👧‍👦</div>
                         <h3 className="text-green-400 text-sm font-bold">Komuniti</h3>
@@ -292,7 +292,7 @@ export default function LandingPage({ onEnter }: LandingPageProps) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="glass-panel rounded-xl p-4 text-center space-y-2"
+                        className="glass-panel rounded-xl p-5 text-center space-y-3"
                     >
                         <div className="text-3xl">🌍</div>
                         <h3 className="text-green-400 text-sm font-bold">Bumi</h3>
