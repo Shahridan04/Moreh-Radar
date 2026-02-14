@@ -35,60 +35,60 @@ export default function StatsBar({ totalMealsSaved, activeMosques, totalActivePa
 
     return (
         <div className="w-full glass-panel border-y border-green-500/10 flex-shrink-0">
-            <div className="flex items-center justify-around py-2.5 px-4">
+            <div className="flex items-center justify-around py-3 px-4">
                 {/* Meals Saved */}
-                <div className="flex items-center gap-2 text-center">
-                    <Utensils className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
-                    <div>
-                        <span className="text-green-400 text-sm font-bold">
-                            <AnimatedNumber target={totalMealsSaved} />
-                        </span>
-                        <span className="text-zinc-500 text-[8px] uppercase tracking-wider ml-1.5">
+                <div className="flex flex-col items-center gap-0.5">
+                    <span className="text-green-400 text-2xl font-bold leading-none tracking-tight">
+                        <AnimatedNumber target={totalMealsSaved} />
+                    </span>
+                    <div className="flex items-center gap-1.5 opacity-80">
+                        <Utensils className="w-3 h-3 text-green-500" />
+                        <span className="text-zinc-500 text-[9px] uppercase tracking-wider font-bold">
                             Hidangan
                         </span>
                     </div>
                 </div>
 
-                <div className="w-px h-5 bg-zinc-800" />
+                <div className="w-px h-8 bg-zinc-800/50" />
 
                 {/* Active Mosques */}
-                <div className="flex items-center gap-2 text-center">
-                    <Building2 className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
-                    <div>
-                        <span className="text-green-400 text-sm font-bold">
-                            <AnimatedNumber target={activeMosques} />
-                        </span>
-                        <span className="text-zinc-500 text-[8px] uppercase tracking-wider ml-1.5">
+                <div className="flex flex-col items-center gap-0.5">
+                    <span className="text-green-400 text-2xl font-bold leading-none tracking-tight">
+                        <AnimatedNumber target={activeMosques} />
+                    </span>
+                    <div className="flex items-center gap-1.5 opacity-80">
+                        <Building2 className="w-3 h-3 text-green-500" />
+                        <span className="text-zinc-500 text-[9px] uppercase tracking-wider font-bold">
                             Masjid
                         </span>
                     </div>
                 </div>
 
-                <div className="w-px h-5 bg-zinc-800" />
+                <div className="w-px h-8 bg-zinc-800/50" />
 
                 {/* Waste Prevented */}
-                <div className="flex items-center gap-2 text-center">
-                    <Leaf className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                    <div>
-                        <span className="text-emerald-400 text-sm font-bold">
-                            ~<AnimatedNumber target={wastePreventedKg} />kg
-                        </span>
-                        <span className="text-zinc-500 text-[8px] uppercase tracking-wider ml-1.5">
+                <div className="flex flex-col items-center gap-0.5">
+                    <span className="text-emerald-400 text-2xl font-bold leading-none tracking-tight">
+                        ~<AnimatedNumber target={wastePreventedKg} />kg
+                    </span>
+                    <div className="flex items-center gap-1.5 opacity-80">
+                        <Leaf className="w-3 h-3 text-emerald-500" />
+                        <span className="text-zinc-500 text-[9px] uppercase tracking-wider font-bold">
                             Jimat
                         </span>
                     </div>
                 </div>
 
-                <div className="w-px h-5 bg-zinc-800" />
+                <div className="w-px h-8 bg-zinc-800/50" />
 
                 {/* Available Pax */}
-                <div className="flex items-center gap-2 text-center">
-                    <TrendingUp className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
-                    <div>
-                        <span className="text-amber-400 text-sm font-bold">
-                            <AnimatedNumber target={totalActivePax} />
-                        </span>
-                        <span className="text-zinc-500 text-[8px] uppercase tracking-wider ml-1.5">
+                <div className="flex flex-col items-center gap-0.5">
+                    <span className="text-amber-400 text-2xl font-bold leading-none tracking-tight">
+                        <AnimatedNumber target={totalActivePax} />
+                    </span>
+                    <div className="flex items-center gap-1.5 opacity-80">
+                        <TrendingUp className="w-3 h-3 text-amber-500" />
+                        <span className="text-zinc-500 text-[9px] uppercase tracking-wider font-bold">
                             Pax
                         </span>
                     </div>

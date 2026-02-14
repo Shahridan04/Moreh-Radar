@@ -29,6 +29,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body
+        suppressHydrationWarning
         style={{
           background: "#050505",
           fontFamily:

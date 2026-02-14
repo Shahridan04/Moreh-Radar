@@ -51,13 +51,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }, [])
 
     const signInWithGoogle = async () => {
-        if (!supabase) return
-        await supabase.auth.signInWithOAuth({
-            provider: 'google',
-            options: {
-                redirectTo: window.location.origin,
-            },
-        })
+        if (!supabase) {
+            console.error('Supabase client not initialized. Check your environment variables.')
+            alert('Authentication Error: Supabase is not configured. Please check your environment variables or README.')
+            return
+        }
+        try {
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: window.location.origin,
+                },
+            })
+            if (error) {
+                console.error('Auth Error:', error)
+                alert(`Login Failed: ${error.message}`)
+            }
+        } catch (err) {
+            console.error('Unexpected Auth Error:', err)
+            alert('An unexpected error occurred during login. Check console for details.')
+        }
     }
 
     const signOut = async () => {

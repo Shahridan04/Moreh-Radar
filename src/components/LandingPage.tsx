@@ -18,7 +18,7 @@ type LandingPageProps = {
 
 export default function LandingPage({ onEnter }: LandingPageProps) {
     return (
-        <div className="min-h-screen bg-zinc-950 text-white overflow-y-auto">
+        <div className="min-h-screen bg-zinc-950 text-white overflow-y-auto flex flex-col items-center w-full">
             {/* Hero Section */}
             <section className="relative min-h-screen flex flex-col items-center justify-center px-8 py-20 overflow-hidden">
                 {/* Animated background grid */}

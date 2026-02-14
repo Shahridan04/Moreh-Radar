@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Moreh Radar
+
+**Kill Hunger. Kill Waste.**
+
+A tactical, real-time geospatial dashboard connecting mosques with surplus Ramadan food to university students in need. Built with Next.js 14, Supabase, and Leaflet.
+
+## Features
+
+- **Real-time Map:** View mosques with surplus food on a dark-mode tactical map.
+- **"Saya Nak Pergi!" System:** Signal attendance to help mosques manage portions.
+- **Community Broadcast:** AJK Masjid can broadcast food availability in seconds.
+- **Impact Stats:** Track total meals saved and waste prevented.
+- **Google Auth:** Secure login for broadcasters.
 
 ## Getting Started
 
-First, run the development server:
+### 1. Environment Setup
+
+Create a `.env.local` file in the root directory:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### 2. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Google Authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Google Login requires configuration in your Supabase Dashboard.
 
-## Learn More
+1.  Go to **Authentication > Providers > Google**.
+2.  Enable it and add your Client ID / Secret.
+3.  Go to **URL Configuration**.
+4.  Add your production URL (e.g., `https://your-app.vercel.app`) to "Redirect URLs".
+5.  **Important:** For Vercel deployments, ensure you follow our [Auth Troubleshooting Guide](file:///C:/Users/idan2/.gemini/antigravity/brain/34517c17-4413-49cd-a066-aff7152f2a8f/auth_troubleshooting.md).
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy easily on Vercel:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FShahridan04%2FMoreh-Radar)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ensure you add the `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` environment variables in Vercel project settings.
