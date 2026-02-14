@@ -247,7 +247,7 @@ export default function Home() {
           <div className="flex bg-zinc-900/90 border border-zinc-700 rounded-lg overflow-hidden">
             <button
               onClick={() => setViewMode('map')}
-              className={`flex items-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-all ${viewMode === 'map'
+              className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold uppercase tracking-wider transition-all ${viewMode === 'map'
                 ? 'bg-green-500/20 text-green-400'
                 : 'text-zinc-500 hover:text-zinc-300'
                 }`}
@@ -257,7 +257,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`flex items-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-all ${viewMode === 'list'
+              className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold uppercase tracking-wider transition-all ${viewMode === 'list'
                 ? 'bg-green-500/20 text-green-400'
                 : 'text-zinc-500 hover:text-zinc-300'
                 }`}
@@ -362,14 +362,16 @@ export default function Home() {
       />
 
       {/* Signal Details Drawer */}
-      {selectedMosque && (
-        <SignalDrawer
-          mosque={selectedMosque}
-          onClose={() => setSelectedMosque(null)}
-          onMarkFinished={handleMarkFinished}
-          onClaim={handleClaim}
-        />
-      )}
-    </div>
+      {
+        selectedMosque && (
+          <SignalDrawer
+            mosque={selectedMosque}
+            onClose={() => setSelectedMosque(null)}
+            onMarkFinished={handleMarkFinished}
+            onClaim={handleClaim}
+          />
+        )
+      }
+    </div >
   )
 }
